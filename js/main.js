@@ -238,7 +238,7 @@ const roles = [
     // 2. 사용자가 확인을 선택하면 다운로드 실행
     if (confirmDownload) {
       const link = document.createElement('a');
-      link.href = '/public/NOH_SEONGGYEOM_resume.pdf';
+      link.href = '/NOH_SEONGGYEOM_resume.pdf';
       link.download = 'NOH_SEONGGYEOM_resume.pdf';
       document.body.appendChild(link);
       link.click();
