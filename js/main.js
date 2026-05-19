@@ -225,7 +225,7 @@ const roles = [
 })();
 
 /* ============================================================
-   Download CV 팝업 및 다운로드 처리
+   Download CV 버튼 팝업 및 다운로드
    ============================================================ */
 (function initDownloadCV() {
   const downloadBtn = document.getElementById('download-cv-btn');
