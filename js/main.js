@@ -30,7 +30,7 @@ const roles = [
   if (!el) return;
 
   let roleIndex = 0;
-  let charIndex  = 0;
+  let charIndex = 0;
   let isDeleting = false;
 
   function tick() {
@@ -50,8 +50,8 @@ const roles = [
       charIndex--;
 
       if (charIndex === 0) {
-        isDeleting  = false;
-        roleIndex   = (roleIndex + 1) % roles.length;
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
       }
     }
 
@@ -67,9 +67,9 @@ const roles = [
    2. NAVBAR — scroll effect & active section highlight
    ============================================================ */
 (function initNavbar() {
-  const navbar    = document.getElementById('navbar');
-  const navLinks  = document.querySelectorAll('.nav-links a[href^="#"]');
-  const sections  = document.querySelectorAll('section[id]');
+  const navbar = document.getElementById('navbar');
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  const sections = document.querySelectorAll('section[id]');
 
   if (!navbar) return;
 
@@ -100,8 +100,8 @@ const roles = [
    3. MOBILE HAMBURGER MENU
    ============================================================ */
 (function initMobileMenu() {
-  const hamburger      = document.getElementById('hamburger');
-  const navLinksEl     = document.getElementById('nav-links');
+  const hamburger = document.getElementById('hamburger');
+  const navLinksEl = document.getElementById('nav-links');
 
   if (!hamburger || !navLinksEl) return;
 
@@ -153,7 +153,7 @@ const roles = [
       });
     },
     {
-      threshold:  0.12,
+      threshold: 0.12,
       rootMargin: '0px 0px -40px 0px',
     }
   );
@@ -196,14 +196,14 @@ const roles = [
 
     /* Static success feedback */
     const originalText = submitBtn.textContent;
-    submitBtn.textContent  = '메시지가 전송되었습니다!';
-    submitBtn.disabled     = true;
+    submitBtn.textContent = '메시지가 전송되었습니다!';
+    submitBtn.disabled = true;
     form.classList.add('success');
 
     setTimeout(() => {
       form.reset();
       submitBtn.textContent = originalText;
-      submitBtn.disabled    = false;
+      submitBtn.disabled = false;
       form.classList.remove('success');
     }, 3500);
   });
@@ -221,5 +221,29 @@ const roles = [
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
+  });
+})();
+
+/* ============================================================
+   Download CV 팝업 및 다운로드 처리
+   ============================================================ */
+(function initDownloadCV() {
+  const downloadBtn = document.getElementById('download-cv-btn');
+  if (!downloadBtn) return;
+
+  downloadBtn.addEventListener('click', () => {
+    // 1. 다운로드 여부를 확인하는 팝업 표시
+    const confirmDownload = confirm("이력서를 PDF로 다운로드하시겠습니까?");
+
+    // 2. 사용자가 확인을 선택하면 다운로드 실행
+    if (confirmDownload) {
+      const link = document.createElement('a');
+      link.href = './public/NOH_SEONGGYEOM_resume.pdf';
+      link.download = 'NOH_SEONGGYEOM_resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+    // 취소를 선택하면 아무 동작도 하지 않음
   });
 })();
