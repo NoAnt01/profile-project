@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
     rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 
   <script id="tailwind-config">
     tailwind.config = {
@@ -19,53 +20,24 @@
       theme: {
         extend: {
           colors: {
-            "surface-container": "#eaedff",
-            "surface-container-highest": "#dae2fd",
-            "secondary-container": "#d0e1fb",
-            "on-tertiary-container": "#009668",
-            "inverse-surface": "#283044",
-            "surface-container-lowest": "#ffffff",
-            "surface-dim": "#d2d9f4",
-            "on-primary": "#ffffff",
-            "on-error": "#ffffff",
-            "tertiary-fixed-dim": "#4edea3",
-            "error": "#ba1a1a",
-            "on-secondary-fixed": "#0b1c30",
-            "background": "#faf8ff",
-            "outline-variant": "#c6c6cd",
-            "primary": "#000000",
-            "inverse-on-surface": "#eef0ff",
-            "on-surface-variant": "#45464d",
-            "surface": "#faf8ff",
-            "on-tertiary": "#ffffff",
-            "on-primary-container": "#5979ff",
-            "secondary": "#505f76",
-            "tertiary-container": "#002113",
-            "on-error-container": "#93000a",
-            "error-container": "#ffdad6",
-            "primary-fixed": "#dde1ff",
-            "primary-container": "#001356",
-            "surface-container-high": "#e2e7ff",
-            "on-primary-fixed-variant": "#0035be",
-            "secondary-fixed-dim": "#b7c8e1",
-            "on-secondary-fixed-variant": "#38485d",
-            "surface-tint": "#124af0",
-            "tertiary": "#000000",
-            "on-secondary": "#ffffff",
-            "outline": "#76777d",
-            "surface-bright": "#faf8ff",
-            "primary-fixed-dim": "#b8c3ff",
-            "on-secondary-container": "#54647a",
-            "secondary-fixed": "#d3e4fe",
-            "inverse-primary": "#b8c3ff",
-            "surface-variant": "#dae2fd",
-            "tertiary-fixed": "#6ffbbe",
-            "on-primary-fixed": "#001356",
-            "surface-container-low": "#f2f3ff",
-            "on-background": "#131b2e",
-            "on-tertiary-fixed-variant": "#005236",
-            "on-surface": "#131b2e",
-            "on-tertiary-fixed": "#002113"
+            "surface": "var(--surface)",
+            "surface-bright": "var(--surface-bright)",
+            "surface-container-lowest": "var(--surface-container-lowest)",
+            "surface-container-low": "var(--surface-container-low)",
+            "surface-container": "var(--surface-container)",
+            "surface-container-high": "var(--surface-container-high)",
+            "surface-container-highest": "var(--surface-container-highest)",
+            "surface-variant": "var(--surface-variant)",
+            "on-surface": "var(--on-surface)",
+            "on-surface-variant": "var(--on-surface-variant)",
+            "primary": "var(--primary)",
+            "primary-container": "var(--primary-container)",
+            "on-primary": "var(--on-primary)",
+            "tertiary": "var(--tertiary)",
+            "tertiary-fixed-dim": "var(--tertiary-fixed-dim)",
+            "surface-tint": "var(--primary)",
+            "outline-variant": "var(--outline-variant)",
+            "background": "var(--surface)"
           },
           borderRadius: {
             DEFAULT: "0.125rem",
@@ -102,27 +74,11 @@
     header,
     aside,
     main,
-    .sidebar-card {
-      transition: background-color 0.4s, color 0.4s;
-    }
-
-    /* ── Dark mode overrides ── */
-    .dark body {
-      background-color: #0f1626;
-      color: #e2e8f8;
-    }
-
-    .dark .sidebar-card {
-      background-color: #1a233a;
-    }
-
-    .dark .hero-card,
-    .dark .exp-card {
-      background-color: #1a233a;
-    }
-
-    .dark .project-card {
-      background-color: #1e2a42;
+    .sidebar-card,
+    .hero-card,
+    .exp-card,
+    .project-card {
+      transition: background-color 0.4s, color 0.4s, border-color 0.4s, box-shadow 0.4s, transform 0.4s;
     }
 
     /* ── Top nav active / inactive ── */
@@ -134,31 +90,17 @@
     }
 
     .nav-link.is-active {
-      color: #124af0;
-      border-bottom-color: #124af0;
-    }
-
-    .dark .nav-link.is-active {
-      color: #4edea3;
-      border-bottom-color: #4edea3;
+      color: var(--primary);
+      border-bottom-color: var(--primary);
     }
 
     .nav-link:not(.is-active) {
-      color: #64748b;
-    }
-
-    .dark .nav-link:not(.is-active) {
-      color: #94a3b8;
+      color: var(--on-surface-muted);
     }
 
     .nav-link:not(.is-active):hover {
-      color: #131b2e;
-      background-color: #f2f3ff;
-    }
-
-    .dark .nav-link:not(.is-active):hover {
-      color: #ffffff;
-      background-color: #1e293b;
+      color: var(--on-surface);
+      background-color: var(--surface-container-low);
     }
 
     /* ── Sidebar nav active / inactive ── */
@@ -174,34 +116,20 @@
     }
 
     .sidebar-link.is-active {
-      background-color: #dae2fd;
-      color: #124af0;
+      background-color: var(--surface-container-highest);
+      color: var(--primary);
       font-weight: 700;
     }
 
-    .dark .sidebar-link.is-active {
-      background-color: rgba(18, 74, 240, 0.2);
-      color: #4edea3;
-    }
-
     .sidebar-link:not(.is-active) {
-      color: #475569;
+      color: var(--on-surface-variant);
       font-weight: 500;
     }
 
-    .dark .sidebar-link:not(.is-active) {
-      color: #94a3b8;
-    }
-
     .sidebar-link:not(.is-active):hover {
-      color: #131b2e;
-      background-color: #f2f3ff;
+      color: var(--on-surface);
+      background-color: var(--surface-container-low);
       transform: translateX(4px);
-    }
-
-    .dark .sidebar-link:not(.is-active):hover {
-      color: #ffffff;
-      background-color: #223050;
     }
   </style>
 </head>
@@ -211,11 +139,10 @@
   <!-- ============================================================
        TOP NAVIGATION
        ============================================================ -->
-  <header
-    class="bg-[#faf8ff] dark:bg-[#131b2e] transition-colors duration-500 sticky top-0 z-50 border-b border-outline-variant/20">
+  <header class="bg-surface transition-colors duration-500 sticky top-0 z-50 border-b border-outline-variant">
     <div class="flex justify-between items-center w-full px-6 md:px-8 py-5 max-w-screen-2xl mx-auto">
 
-      <div class="text-2xl md:text-3xl font-black text-[#131b2e] dark:text-[#faf8ff] tracking-tighter font-headline">
+      <div class="text-2xl md:text-3xl font-black text-on-surface tracking-tighter font-headline">
         IM.DEV<span class="text-surface-tint">_</span>
       </div>
 
@@ -253,16 +180,17 @@
          ────────────────────────────────────────────────────────── -->
     <aside class="w-full md:w-80 flex-shrink-0 mb-10 md:mb-0">
       <div
-        class="sidebar-card bg-surface-container-low dark:bg-[#1a233a] rounded-xl shadow-xl p-6 flex flex-col sticky top-28">
+        class="sidebar-card bg-surface-container-low rounded-xl shadow-xl p-6 flex flex-col sticky top-28 border border-outline-variant hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(255,212,59,0.15)] transition-all duration-300">
 
         <!-- Profile Header -->
         <div class="flex flex-col items-center mb-8 text-center">
-          <div class="w-32 h-32 rounded-full overflow-hidden mb-4 border-4 border-surface shadow-md">
+          <div
+            class="w-32 h-32 rounded-full overflow-hidden mb-4 border-4 border-surface shadow-md hover:scale-105 transition-transform duration-300">
             <img
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuCevMEfwxUYg2dxXPfc-qcG_Khtn58BfDe8jjdnnIrpRW6kMrMEqLIv9vzoWlogu6aQRirhR3CLVvI0XG2lO4ssLVt0Fs2BtZoNqTs6PTQRDx-EaK440TkVHqE_6l5VkFPHo8RvkaICCw6ZQESr2fd9-vjyaaaEHmI1VMbOayrVkhCov6NWE4VKBzNOcTTNn8jVKaLr7e04ZxS1iHn-1mS4FKdzl8-bpONRnFUUnDzTBDwsgZo0sJmh-fkzqadLtitatDksE8VzaERK"
               alt="노성겸 프로필 사진" class="w-full h-full object-cover">
           </div>
-          <h1 class="text-xl font-bold text-[#131b2e] dark:text-white font-headline tracking-tight">
+          <h1 class="text-xl font-bold text-on-surface font-headline tracking-tight">
             노성겸 <span class="text-xs text-on-surface-variant font-normal block mt-1">(NOH SEONGGYEOM)</span>
           </h1>
           <p class="text-surface-tint font-body font-semibold mt-2 text-xs">Git &amp; GitHub 실습생</p>
@@ -302,7 +230,7 @@
           </div>
 
           <a href="https://github.com/NoAnt01"
-            class="block w-full text-center bg-primary-container text-on-primary py-3 rounded-xl font-headline font-bold hover:opacity-90 transition-all text-sm">
+            class="block w-full text-center bg-primary-container text-on-surface py-3 rounded-xl font-headline font-bold hover:opacity-80 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 text-sm border border-outline-variant">
             Visit My Github
           </a>
         </div>
@@ -317,9 +245,9 @@
 
       <!-- ── Hero / Intro ── -->
       <section id="profile"
-        class="hero-card relative p-8 md:p-12 bg-surface-container-lowest rounded-xl shadow-[0_10px_30px_rgba(19,27,46,0.06)] overflow-hidden">
+        class="hero-card relative p-8 md:p-12 bg-surface-container-lowest rounded-xl shadow-[0_10px_30px_rgba(19,27,46,0.06)] border border-outline-variant overflow-hidden hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(255,212,59,0.15)] transition-all duration-300">
         <div
-          class="absolute inset-0 bg-gradient-to-br from-primary-container/5 to-surface-tint/5 opacity-60 pointer-events-none">
+          class="absolute inset-0 bg-gradient-to-br from-primary-container to-surface opacity-30 pointer-events-none">
         </div>
         <div class="relative z-10">
           <div
@@ -330,7 +258,7 @@
           <h2
             class="font-headline text-4xl md:text-5xl font-extrabold text-on-surface tracking-tighter mb-6 leading-tight">
             안녕하세요, <br>
-            <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#124af0] to-[#4edea3]">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-tertiary">
               노성겸
             </span>
             입니다.
@@ -364,7 +292,7 @@
       <section id="education">
         <div class="flex items-center gap-4 mb-8">
           <h3 class="font-headline text-2xl font-bold text-on-surface whitespace-nowrap">Education</h3>
-          <div class="h-px flex-1 bg-gradient-to-r from-surface-tint/30 to-transparent"></div>
+          <div class="h-px flex-1 bg-gradient-to-r from-primary to-transparent opacity-30"></div>
         </div>
 
         <div class="flex flex-col gap-6">
@@ -374,7 +302,7 @@
               class="absolute left-0 top-0 text-5xl font-headline font-black text-surface-container-high opacity-50 select-none -z-10 -mt-2 -ml-4">
               2020</div>
             <div
-              class="exp-card bg-surface-container-lowest p-6 rounded-xl shadow-[0_4px_20px_rgba(19,27,46,0.04)] border border-outline-variant/20 hover:shadow-[0_10px_30px_rgba(19,27,46,0.08)] hover:bg-surface-bright transition-all duration-300">
+              class="exp-card bg-surface-container-lowest p-6 rounded-xl shadow-md border border-outline-variant hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,212,59,0.2)] hover:border-primary transition-all duration-300">
               <div class="flex flex-col md:flex-row justify-between md:items-center gap-2 mb-3">
                 <h4 class="font-headline text-xl font-bold text-on-surface">University of Pai Chai (배재대학교)</h4>
                 <span
@@ -394,7 +322,7 @@
               class="absolute left-0 top-0 text-5xl font-headline font-black text-surface-container-high opacity-50 select-none -z-10 -mt-2 -ml-4">
               2017</div>
             <div
-              class="exp-card bg-surface-container-lowest p-6 rounded-xl shadow-[0_4px_20px_rgba(19,27,46,0.04)] border border-outline-variant/20 hover:shadow-[0_10px_30px_rgba(19,27,46,0.08)] hover:bg-surface-bright transition-all duration-300">
+              class="exp-card bg-surface-container-lowest p-6 rounded-xl shadow-md border border-outline-variant hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,212,59,0.2)] hover:border-primary transition-all duration-300">
               <div class="flex flex-col md:flex-row justify-between md:items-center gap-2 mb-3">
                 <h4 class="font-headline text-xl font-bold text-on-surface">Daejeon Dongsan High School (대전동산고등학교)</h4>
                 <span
@@ -413,23 +341,26 @@
       <section id="practice">
         <div class="flex items-center gap-4 mb-8">
           <h3 class="font-headline text-2xl font-bold text-on-surface whitespace-nowrap">Git &amp; GitHub Practice</h3>
-          <div class="h-px flex-1 bg-gradient-to-r from-surface-tint/30 to-transparent"></div>
+          <div class="h-px flex-1 bg-gradient-to-r from-primary to-transparent opacity-30"></div>
         </div>
 
         <div
-          class="bg-surface-container-lowest rounded-xl border border-outline-variant/20 p-8 shadow-[0_4px_20px_rgba(19,27,46,0.04)]">
+          class="bg-surface-container-lowest rounded-xl border border-outline-variant p-8 shadow-md hover:shadow-xl transition-shadow duration-300">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="p-5 bg-surface-container rounded-xl flex flex-col items-center text-center">
+            <div
+              class="p-5 bg-surface-container rounded-xl flex flex-col items-center text-center hover:-translate-y-2 hover:shadow-lg transition-transform duration-300 border border-transparent hover:border-primary">
               <span class="material-symbols-outlined text-surface-tint text-4xl mb-3">commit</span>
               <h4 class="font-headline font-bold text-on-surface mb-1">Commit &amp; Push</h4>
               <p class="text-xs text-on-surface-variant">코드를 변경하고 로컬 및 원격 저장소에 커밋하는 기초를 학습 중입니다.</p>
             </div>
-            <div class="p-5 bg-surface-container rounded-xl flex flex-col items-center text-center">
+            <div
+              class="p-5 bg-surface-container rounded-xl flex flex-col items-center text-center hover:-translate-y-2 hover:shadow-lg transition-transform duration-300 border border-transparent hover:border-primary">
               <span class="material-symbols-outlined text-surface-tint text-4xl mb-3">fork_left</span>
               <h4 class="font-headline font-bold text-on-surface mb-1">Branching &amp; Merging</h4>
               <p class="text-xs text-on-surface-variant">독립적인 작업을 위한 브랜치 모델링과 충돌 제어를 연습 중입니다.</p>
             </div>
-            <div class="p-5 bg-surface-container rounded-xl flex flex-col items-center text-center">
+            <div
+              class="p-5 bg-surface-container rounded-xl flex flex-col items-center text-center hover:-translate-y-2 hover:shadow-lg transition-transform duration-300 border border-transparent hover:border-primary">
               <span class="material-symbols-outlined text-surface-tint text-4xl mb-3">settings_ethernet</span>
               <h4 class="font-headline font-bold text-on-surface mb-1">Pull Request</h4>
               <p class="text-xs text-on-surface-variant">다양한 원격 저장소에서 협업을 진행하고 코드 뷰를 이해하는 실습입니다.</p>
@@ -442,9 +373,10 @@
       <section id="contact" class="mb-4">
         <div class="flex items-center gap-4 mb-8">
           <h3 class="font-headline text-2xl font-bold text-on-surface whitespace-nowrap">Contact</h3>
-          <div class="h-px flex-1 bg-gradient-to-r from-surface-tint/30 to-transparent"></div>
+          <div class="h-px flex-1 bg-gradient-to-r from-primary to-transparent opacity-30"></div>
         </div>
-        <div class="bg-surface-container-lowest rounded-xl border border-outline-variant/20 p-8">
+        <div
+          class="bg-surface-container-lowest rounded-xl border border-outline-variant p-8 shadow-md hover:shadow-lg transition-shadow duration-300">
           <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8">
             <div>
               <p class="font-headline text-xl font-bold text-on-surface mb-1">함께 소통해봐요!</p>
@@ -455,12 +387,12 @@
             </div>
             <div class="flex flex-wrap gap-3 shrink-0">
               <a href="mailto:noant1101@gmail.com"
-                class="flex items-center gap-2 px-5 py-2.5 bg-primary-container text-on-primary rounded-xl font-headline font-bold text-sm hover:opacity-90 transition-opacity">
+                class="flex items-center gap-2 px-5 py-2.5 bg-primary-container text-on-surface border border-outline-variant rounded-xl font-headline font-bold text-sm hover:opacity-80 hover:-translate-y-1 hover:shadow-md transition-all duration-300">
                 <span class="material-symbols-outlined text-lg">mail</span>
                 이메일 보내기
               </a>
               <a href="https://github.com/noant01" target="_blank" rel="noopener noreferrer"
-                class="flex items-center gap-2 px-5 py-2.5 bg-surface-container rounded-xl font-headline font-bold text-sm text-on-surface hover:bg-surface-container-high transition-colors">
+                class="flex items-center gap-2 px-5 py-2.5 bg-surface-container rounded-xl font-headline font-bold text-sm text-on-surface hover:bg-surface-container-high hover:-translate-y-1 hover:shadow-md transition-all duration-300 border border-transparent hover:border-outline-variant">
                 <span class="material-symbols-outlined text-lg">code</span>
                 GitHub
               </a>
@@ -468,7 +400,7 @@
           </div>
 
           <!-- 연락처 상세 -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-outline-variant/20">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-outline-variant">
             <div class="flex items-center gap-3">
               <span class="material-symbols-outlined text-surface-tint">mail</span>
               <div>

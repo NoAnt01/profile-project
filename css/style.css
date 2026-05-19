@@ -45,13 +45,13 @@
   --on-surface-muted:          #9497a8;   /* 날짜·힌트 텍스트 */
 
   /* --- Primary Brand --- */
-  --primary:                   #124af0;
-  --primary-container:         #001356;
-  --on-primary:                #ffffff;
+  --primary:                   #ffd43b;   /* 연한 노랑색 */
+  --primary-container:         #fff3bf;
+  --on-primary:                #131b2e;
 
   /* --- Tertiary / Success Accent --- */
-  --tertiary:                  #009668;
-  --tertiary-fixed-dim:        #4edea3;   /* 칩 상태 점, 상태 뱃지 */
+  --tertiary:                  #fab005;
+  --tertiary-fixed-dim:        #fab005;   /* 칩 상태 점, 상태 뱃지 */
 
   /* --- Outline --- */
   --outline-variant:           #c6c6cd;
@@ -75,6 +75,41 @@
   /* --- Shadows (Ambient — soft, natural) --- */
   --shadow-ambient: 0 10px 30px rgba(19, 27, 46, 0.06);
   --shadow-hover:   0 16px 48px rgba(19, 27, 46, 0.11);
+}
+
+/* ============================================================
+   1-1. DARK MODE VARIABLES
+   ============================================================ */
+.dark {
+  /* --- Surface Hierarchy (배경 깊이 계층) --- */
+  --surface:                   #0f1626;
+  --surface-bright:            #151e32;
+  --surface-container-lowest:  #0a0e17;
+  --surface-container-low:     #131b2e;
+  --surface-container:         #1a233a;
+  --surface-container-high:    #1e2a42;
+  --surface-container-highest: #223050;
+  --surface-variant:           #334155;
+
+  /* --- Content Colors --- */
+  --on-surface:                #e2e8f8;
+  --on-surface-variant:        #94a3b8;
+  --on-surface-muted:          #64748b;
+
+  /* --- Primary Brand --- */
+  --primary:                   #fab005;
+  --primary-container:         #5c4b00;
+  --on-primary:                #ffffff;
+
+  /* --- Tertiary / Success Accent --- */
+  --tertiary:                  #ffd43b;
+  --tertiary-fixed-dim:        #fab005;
+
+  /* --- Outline --- */
+  --outline-variant:           #334155;
+  
+  --shadow-ambient:            0 10px 30px rgba(0, 0, 0, 0.3);
+  --shadow-hover:              0 16px 48px rgba(255, 212, 59, 0.15);
 }
 
 
