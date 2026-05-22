@@ -152,6 +152,8 @@
           class="nav-link tracking-tight font-extrabold uppercase px-2 rounded-sm">Profile</a>
         <a href="#education" data-section="education"
           class="nav-link tracking-tight font-extrabold uppercase px-2 rounded-sm">Education</a>
+        <a href="#certs" data-section="certs"
+          class="nav-link tracking-tight font-extrabold uppercase px-2 rounded-sm">Certifications</a>  
         <a href="#practice" data-section="practice"
           class="nav-link tracking-tight font-extrabold uppercase px-2 rounded-sm">Practice</a>
         <a href="#contact" data-section="contact"
@@ -212,6 +214,10 @@
           <a href="#education" data-section="education" class="sidebar-link font-headline tracking-wide">
             <span class="material-symbols-outlined text-xl">school</span>
             Education
+          </a>
+          <a href="#certs" data-section="certs" class="sidebar-link font-headline tracking-wide">
+            <span class="material-symbols-outlined text-xl">school</span>
+            Certifications
           </a>
           <a href="#practice" data-section="practice" class="sidebar-link font-headline tracking-wide">
             <span class="material-symbols-outlined text-xl">code</span>
@@ -343,6 +349,34 @@
         </div>
       </section>
 
+      <!-- ── Certifications ── -->
+      <section id="certs">
+        <div class="flex items-center gap-4 mb-8">
+          <h3 class="font-headline text-2xl font-bold text-on-surface whitespace-nowrap">Certifications & Education</h3>
+          <div class="h-px flex-1 bg-gradient-to-r from-surface-tint/30 to-transparent"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- 자격증 -->
+          <div
+            class="flex items-center gap-4 p-4 bg-surface-container-lowest rounded-xl border border-outline-variant/20 hover:border-surface-tint/30 transition-all">
+            <span class="material-symbols-outlined text-surface-tint text-3xl shrink-0">verified</span>
+            <div>
+              <div class="font-headline font-bold text-on-surface text-sm">정보처리기사(필기)</div>
+              <div class="font-label text-xs text-on-surface-variant mt-0.5">한국산업인력공단 · 실기 2026년 9월 취득 예정</div>
+            </div>
+          </div>
+          <div
+            class="flex items-center gap-4 p-4 bg-surface-container-lowest rounded-xl border border-outline-variant/20 hover:border-surface-tint/30 transition-all">
+            <span class="material-symbols-outlined text-surface-tint text-3xl shrink-0">verified</span>
+            <div>
+              <div class="font-headline font-bold text-on-surface text-sm">JLPT N1</div>
+              <div class="font-label text-xs text-on-surface-variant mt-0.5">국제교류기금 · 2026년 2월 취득</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- ── Git & GitHub Practice ── -->
       <section id="practice">
         <div class="flex items-center gap-4 mb-8">
@@ -457,7 +491,7 @@
     const sidebarLinks = document.querySelectorAll('#sidebar-nav .sidebar-link');
 
     // 스크롤 감지할 섹션 목록
-    const sectionIds = ['profile', 'education', 'practice', 'contact'];
+    const sectionIds = ['profile', 'education','certs', 'practice', 'contact'];
 
     function setActive(sectionId) {
       const topId = sectionId;
