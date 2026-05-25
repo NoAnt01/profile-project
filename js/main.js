@@ -211,18 +211,31 @@ const roles = [
 
 
 /* ============================================================
-   Smooth scroll for anchor links (fallback for older Safari)
+   Smooth scroll for anchor links (고정 헤더 높이 반영 보정)
    ============================================================ */
 (function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
-      const target = document.querySelector(anchor.getAttribute('href'));
+      const targetId = anchor.getAttribute('href');
+      const target = document.querySelector(targetId);
       if (!target) return;
+      
       e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      
+      // 상단 고정 헤더의 높이만큼 여백을 설정합니다 (약 100px)
+      const headerOffset = 100; 
+      const elementPosition = target.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+      // 설정한 여백을 반영하여 부드럽게 스크롤 이동
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     });
   });
 })();
+
 
 /* ============================================================
    Download CV 버튼 팝업 및 다운로드
